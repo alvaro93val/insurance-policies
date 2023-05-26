@@ -1,0 +1,18 @@
+@host = localhost
+@port = 80
+
+### Get user data filtered by user id -> Can be accessed by users with role "users" and "admin"
+GET http://{{host}}:{{port}}/user/data?access=Baxter&id=8e336cb2-37d0-4e3d-91d8-0a1d2b3e5967
+
+### Get user data filtered by user name -> Can be accessed by users with role "users" and "admin"
+GET http://{{host}}:{{port}}/user/data/name?access=Baxter&userName=Mae
+
+### Get the list of policies linked to a user name -> Can be accessed by users with role "admin"
+GET http://{{host}}:{{port}}/policy/list?access=Allen&userName=Roberts
+### Access denied for not having permission. Example 'Baxter' that is user with role 'users'
+GET http://{{host}}:{{port}}/policy/list?access=Baxter&userName=Roberts
+
+### Get the user linked to a policy number -> Can be accessed by users with role "admin"
+GET http://{{host}}:{{port}}/policy/user?access=Allen&policyNumber=aeee4a0d-2d14-4c22-aae9-b4f1be58acdb
+### Access denied for not having permission. Example 'Baxter' that is user with role 'users'
+GET http://{{host}}:{{port}}/policy/user?access=Baxter&policyNumber=aeee4a0d-2d14-4c22-aae9-b4f1be58acdb
